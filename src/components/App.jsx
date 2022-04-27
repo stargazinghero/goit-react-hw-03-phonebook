@@ -36,12 +36,14 @@ export class App extends Component {
       number,
     };
 
-    contacts.map(contactItem => {
-      if (contactItem.name === contact.name) {
-        return alert(`${contact.name} is already in contacts`);
-      }
-      return contactItem;
-    });
+    if (
+      contacts.some(
+        contactItem =>
+          contactItem.name.toLowerCase() === contact.name.toLowerCase()
+      )
+    ) {
+      return alert(`${contact.name} is already in contacts`);
+    }
 
     this.setState(({ contacts }) => {
       return {
